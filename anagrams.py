@@ -9,28 +9,40 @@
 # anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
 
 
+# def anagrams(word, words):
+#     res = []
+#     len_word = len(word)
+#     for i in words:
+#         if len_word == len(i):
+#             res.append(i)
+
+#     res_index = []
+#     for i in range(len(res)):
+#         for j in word:
+#             if j not in res[i]:
+#                 res_index.append(i)
+#                 break
+#             for j in res[i]:
+#                 if j not in word:
+#                     res_index.append(i)
+#                     break
+
+#     res_new = []
+#     for i in range(len(res)):
+#         if i not in res_index:
+#             res_new.append(res[i])
+
+#     return res_new
+
+
 def anagrams(word, words):
-    res = []
-    len_word = len(word)
-    for i in words:
-        if len_word == len(i):
-            res.append(i)
-
-    res_index = []
-    for i in range(len(res)):
-        for j in res[i]:
-            if j not in word:
-                res_index.append(i)
-                break
-
-    res_new = []
-    for i in range(len(res)-1):
-        if i not in res_index:
-            res_new.append(res[i])
-
-    return res_new
+    return [item for item in words if sorted(item) == sorted(word)]
 
 
-word = 'abba'
-words = ['aabb', 'abcd', 'bbaa', 'dada', 'sdfs']
-print(anagrams(word, words))
+# def anagrams(word, words):
+#     return filter(lambda x: sorted(word) == sorted(x), words)
+
+
+word = 'racer'
+words = ['crazer', 'carer', 'racar', 'caers', 'racer']
+print(anagrams(word, words))  # => ['carer', 'racer']
